@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Cart from '@/components/Cart'
 import Main from '@/components/Main'
+import Catalog from '@/components/Catalog'
 import Product from '@/components/Product'
+import Cart from '@/components/Cart'
 import EditProduct from '@/components/EditProduct'
 
 Vue.use(Router)
@@ -14,6 +15,12 @@ export default new Router({
       path: '/',
       name: 'iMain',
       component: Main,
+      props: true
+    },
+    {
+      path: '/catalog',
+      name: 'Catalog',
+      component: Catalog,
       props: true
     },
     {

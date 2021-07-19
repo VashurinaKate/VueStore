@@ -19,13 +19,13 @@
 
                     <div class="products__item-img">
                         <router-link 
-                            :to="{name : 'Id', params: {id: product.id}}"><img v-bind:src="product.image" alt="product"></router-link>
+                            :to="{name : 'Id', params: {id: product.id}}"><img :src="product.image" alt="product"></router-link>
                     </div>
                     <div class="products__item-content">
                         <div class="products__item-name">
-                            <router-link tag="a"
+                            <router-link
                                 :to="{name : 'Id', params: {id: product.id}}">
-                                {{ product.title }}    
+                                {{ product.title }}
                             </router-link>
                         </div>
                         <div class="products__item-description">
@@ -42,7 +42,7 @@
                         <span class="inventory-message"
                             v-else>Buy Now!</span>
                         <div class="rating">
-                            <span  v-bind:class="{'rating-active' :checkRating(n, product)}" v-for="n in 5" >☆</span>
+                            <span :class="{'rating-active' :checkRating(n, product)}" v-for="n in 5" >☆</span>
                         </div>
                     </div>
                 </div>
@@ -86,21 +86,22 @@
 <script>
 import MyHeader from './Header.vue'
 import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
     name: 'imain',
-    data() {
-        return {
-            cart: []
-        }
-    },
     components: { MyHeader },
     methods: {
+        ...mapActions([
+            'INIT_CART'
+        ]),
         checkRating(n, myProduct) {
             return myProduct.rating - n >= 0;
         },
         addToCart(aProduct) {
-            this.cart.push(aProduct.id);
+            // this.cart.push(aProduct.id);
+            this.INIT_CART(aProduct)
+            // this.$emit('addToCart', this.cart.data)
         },
         canAddToCart(aProduct) {
             //return this.product.availableInventory > this.cartItemCount;
@@ -111,8 +112,8 @@ export default {
         },
         cartCount(id) {
             let count = 0;
-            for (var i = 0; i < this.cart.length; i++) {
-                if (this.cart[i] === id) {
+            for (var i = 0; i < this.CART.length; i++) {
+                if (this.CART[i] === id) {
                     count++;
                 }
             }
@@ -121,14 +122,16 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'products'
+            'PRODUCTS',
+            'CART'
         ]),
         cartItemCount() {
-            return this.cart.length || '0';
+            return this.CART.length || '0';
         },
         sortedProducts() {
-            if (this.products.length > 0) {
-                let productsArray = this.products.slice(0);
+            if (this.PRODUCTS.length > 0) {
+                let productsArray = this.PRODUCTS.slice(0);
+                console.log(this.PRODUCTS);
                 function compare(a, b) {
                 if (a.title.toLowerCase() < b.title.toLowerCase())
                     return -1;
@@ -160,7 +163,7 @@ export default {
         }
     },
     created: function() {
-        this.$store.dispatch('initStore');
+        this.$store.dispatch('INIT_STORE');
     }
 }
 </script>

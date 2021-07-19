@@ -13,7 +13,7 @@
                 <div class="product__slider-item">
                     <div class="product__slider-top">
                         <div class="product__slider-img">
-                            <img v-bind:src="product.image" alt="product">
+                            <img :src="product.image" alt="product">
                         </div>
                     </div>
                     <div class="product__detail">
@@ -129,12 +129,14 @@ export default {
         // ...mapGetters([
         //     'products'
         // ]),
+
+        // refactor it!!!
         product() {
             return this.$store.getters.products;
         }
     },
     created: function() {
-        this.$store.dispatch('initProductItem');
+        this.$store.dispatch('INIT_PRODUCT_ITEM');
     }
 }
 </script>
