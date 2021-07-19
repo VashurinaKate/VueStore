@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Form from '@/components/Form'
+import Cart from '@/components/Cart'
 import Main from '@/components/Main'
 import Product from '@/components/Product'
 import EditProduct from '@/components/EditProduct'
@@ -31,9 +31,9 @@ export default new Router({
       ]
     },
     {
-      path: '/form',
-      name: 'Form',
-      component: Form,
+      path: '/cart',
+      name: 'Cart',
+      component: Cart,
       props: true
     },
     {
