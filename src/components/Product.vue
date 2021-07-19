@@ -86,26 +86,6 @@
                         </svg>
                 </div>
             </section>
-
-
-
-
-        <!-- <div class="row">
-            <div class="col-md-5 col-md-offset-0">
-                <figure>
-                    <img class="product" v-bind:src="product.image">
-                </figure>
-            </div>
-            <div class="col-md-6 col-md-offset-0 description">
-                <h1>{{ product.title }}</h1>
-                <p v-html="product.description"></p>
-                <p class="price">
-                    {{ product.price }}
-                </p>
-                <button @click="edit">Edit Product</button>
-                <router-view></router-view>
-            </div>
-        </div> -->
     </div>
 </template>
 
@@ -115,24 +95,15 @@ import { mapGetters } from 'vuex'
 
 export default {
     components: { MyHeader },
-    // data() {
-    //     return {
-    //         product: ''
-    //     }
-    // },
     methods: {
         edit() {
             this.$router.push({name: 'Edit'})
         }
     },
     computed: {
-        // ...mapGetters([
-        //     'products'
-        // ]),
-
         // refactor it!!!
         product() {
-            return this.$store.getters.products;
+            return this.$store.getters.PRODUCTS;
         }
     },
     created: function() {

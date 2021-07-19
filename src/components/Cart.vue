@@ -1,14 +1,12 @@
 <template>
     <div>
-        <my-header :cartItemCount="cartItemCount"></my-header>
-        <div
-            class="cart center"
-            >
+        <my-header></my-header>
+        <div class="cart center">
             <div class="cart__items">
                 <cart-item
-                    v-for="cartItem in cart"
-                    :key="cartItem.id"
                     :cartData="cartItem"
+                    v-for="cartItem in CART"
+                    :key="cartItem.id"
                     ></cart-item>
 
                 <div class="cart__bottom">
@@ -31,25 +29,17 @@ import { mapActions } from 'vuex'
 
 export default {
     name: 'Cart',
-  props: ['cart'],
-//   data () {
-//       return {
-//           cart: []
-//       }
-//   },
-    
     components: { MyHeader, OrderForm, CartItem },
     methods: {
         ...mapActions([
-            // 'initStore',
-            'initCart'
+            'INIT_CART'
         ])
     },
-    // computed: {
-    //     ...mapGetters([
-    //         'cart'
-    //     ])
-    // }
+    computed: {
+        ...mapGetters([
+            'CART'
+        ])
+    }
 }
 </script>
 <style scoped>

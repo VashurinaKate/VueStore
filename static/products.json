@@ -24,7 +24,7 @@
       "description": "Premium kitty litter for your cat.",
       "price": 1100,
       "image": "static/images/products/3.jpg",
-      "availableInventory": 99,
+      "availableInventory": 4,
       "rating": 4
     },
     {
@@ -33,7 +33,7 @@
       "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi!",
       "price": 799,
       "image": "static/images/products/4.jpg",
-      "availableInventory": 11,
+      "availableInventory": 2,
       "rating": 5
     },
     {
@@ -42,7 +42,7 @@
       "description": "Drive your cat crazy with this <em>amazing</em> product.",
       "price": 4999,
       "image": "static/images/products/5.jpg",
-      "availableInventory": 25,
+      "availableInventory": 8,
       "rating": 1
     }
   ]

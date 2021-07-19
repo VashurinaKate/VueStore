@@ -32,7 +32,7 @@ const actions = {
     //get cart items
     INIT_CART: ({commit}, product) => {
         commit('SET_CART', product)
-    },
+    }
 };
 
 export default {

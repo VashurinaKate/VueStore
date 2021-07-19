@@ -66,6 +66,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'my-header',
   data () {
@@ -73,11 +75,13 @@ export default {
       sitename: "Vue.js Vashurina Shop",
     }
   },
-  props: ['cartItemCount'],
-  methods: {
-    // showCheckout() {
-    //   this.$router.push({name: 'Cart'});
-    // }
+  computed: {
+    ...mapGetters([
+      'CART'
+    ]),
+    cartItemCount() {
+      return this.CART.length || '0'
+    }
   }
 }
 </script>

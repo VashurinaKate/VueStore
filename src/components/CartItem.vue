@@ -1,16 +1,16 @@
 <template>
     <div class="cart__item">
         <router-link
-            :to="{name : 'Id', params: {id: cartItem.id}}">
-            <img :src="cartItem.image" alt="product" class="cart__img">
+            :to="{name : 'Id', params: {id: cartData.id}}">
+            <img :src="cartData.image" alt="product" class="cart__img">
         </router-link>
         <div class="cart__text">
             <div class="cart__heading">
                 <router-link
-                    :to="{name : 'Id', params: {id: cartItem.id}}">{{ cartItem.title }}
+                    :to="{name : 'Id', params: {id: cartData.id}}">{{ cartData.title }}
                 </router-link>
             </div>
-                <p>Price: <span class="price">{{ cartItem.price | formatPrice }}</span></p>
+                <p>Price: <span class="price">{{ cartData.price | formatPrice }}</span></p>
                 <p>Color: Red</p>
                 <p>Size: XL</p>
                 <div class="quantity">
@@ -29,9 +29,6 @@
 export default {
     name: 'CartItem',
     props: ['cartData'],
-    created: function() {
-        this.$store.dispatch('INIT_CART');
-    },
     methods: {}
 }
 </script>
