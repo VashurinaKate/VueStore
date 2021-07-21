@@ -4,12 +4,13 @@
         <div class="cart center">
             <div class="cart__items">
                 <cart-item
-                    :cartData="cartItem"
-                    v-for="cartItem in CART"
+                    :cartItem="cartItem"
+                    v-for="cartItem in this.$store.state.shoppingCart.cart"
                     :key="cartItem.id"
                     ></cart-item>
 
                 <div class="cart__bottom">
+                    {{ showSubTotal }}
                     <a href="#" class="btn btn--simple">Clear shopping cart</a>
                     <a href="#" class="btn btn--simple">Continue shopping</a>
                 </div>
@@ -24,21 +25,25 @@
 import MyHeader from './Header.vue'
 import CartItem from './CartItem.vue'
 import OrderForm from './Form.vue'
-import { mapGetters } from 'vuex'
-import { mapActions } from 'vuex'
 
 export default {
     name: 'Cart',
     components: { MyHeader, OrderForm, CartItem },
+    data() {
+        return {
+            subTotal: 0
+        }
+    },
     methods: {
-        ...mapActions([
-            'INIT_CART'
-        ])
+
     },
     computed: {
-        ...mapGetters([
-            'CART'
-        ])
+        showSubTotal() {
+            for (let item of this.$store.state.shoppingCart.cart) {
+                this.subTotal += item.totalPrice;
+            }
+            return this.subTotal
+        }
     }
 }
 </script>

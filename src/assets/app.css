@@ -886,11 +886,11 @@ label {
   color: #575757;
   position: relative;
 }
-.cart__text .quantity input[type=number]::-webkit-inner-spin-button,
+/* .cart__text .quantity input[type=number]::-webkit-inner-spin-button,
 .cart__text .quantity input[type=number]::-webkit-outer-spin-button {
   position: absolute;
   right: 0;
-}
+} */
 .cart__heading {
   margin-bottom: 42px;
 }

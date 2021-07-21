@@ -52,7 +52,7 @@
           class="radio"
           type="radio"
           id="business"
-          v-bind:value="order.business"
+          :value="order.business"
           v-model="order.method">
         <label for="business">Business</label>
         <!-- <button type="submit" class="btn btn--main" v-on:click="submitForm">PLACE ORDER</button> -->
@@ -84,8 +84,6 @@
 </template>
 
 <script>
-// import Cart from './Cart.vue';
-// import MyHeader from './Header.vue'
 
 export default {
   name: 'OrderForm',
@@ -115,7 +113,6 @@ export default {
  
     }
   },
-  // components: { MyHeader, Cart },
   methods: {
     submitForm() {
       alert('Submitted');

@@ -1,19 +1,14 @@
 import router from '@/router'
 
 const state = {
-    products: {},
-    cart: []
+    products: {}
 };
 const getters = {
-    PRODUCTS: state => state.products,
-    CART: state => state.cart
+    PRODUCTS: state => state.products
 };
 const mutations = {
     'SET_STORE' (state, products) {
         state.products = products;
-    },
-    'SET_CART' (state, product) {
-        state.cart.push(product)
     }
 };
 const actions = {
@@ -28,10 +23,6 @@ const actions = {
         axios.get('static/products.json').then(response => {
             commit('SET_STORE', response.data.products.filter(data => data.id == router.currentRoute.params.id)[0]);
         })
-    },
-    //get cart items
-    INIT_CART: ({commit}, product) => {
-        commit('SET_CART', product)
     }
 };
 
