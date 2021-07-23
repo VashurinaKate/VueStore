@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/components/Main'
+import Main from '@/views/Main'
 import Catalog from '@/components/Catalog'
 import Product from '@/components/Product'
 import Cart from '@/components/Cart'

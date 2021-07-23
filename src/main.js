@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { store } from './store/store'
+import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 require('./assets/app.css')
 
@@ -11,6 +13,24 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 Vue.mixin({
+  methods: {
+    ...mapActions([
+      'INIT_CART'
+    ]),
+    addedToCart(product) {
+      // return this.$store.state.shoppingCart.cart.find(item => item.id == product.id)
+      return this.CART.find(item => item.id == product.id)
+    },
+    addToCart(aProduct) {
+      this.INIT_CART(aProduct)
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'PRODUCTS',
+      'CART'
+    ]),
+  },
   filters: {
     formatPrice(price) {
       if (!parseInt(price)) {

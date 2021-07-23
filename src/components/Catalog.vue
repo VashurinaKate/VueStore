@@ -6,6 +6,7 @@
                 <h1>Catalog</h1>
                 <p>Shop for items based on what we featured in this week</p>
             </div>
+            <loader v-if="this.$store.state.products.loading"/>
             <div class="products__items">
                 <catalog-item
                     v-for="product in sortedProducts"
@@ -20,26 +21,16 @@
 
 <script>
 import MyHeader from './Header.vue'
-import CatalogItem from './CatalogItem'
-import { mapGetters } from 'vuex'
-import { mapActions } from 'vuex'
+import CatalogItem from './CatalogItem.vue'
+import Loader from './Loader.vue'
 
 export default {
     name: 'Catalog',
-    components: { MyHeader, CatalogItem },
+    components: { MyHeader, CatalogItem, Loader },
     methods: {
-        ...mapActions([
-            'INIT_CART'
-        ]),
-        addToCart(aProduct) {
-            this.INIT_CART(aProduct)
-        }
+
     },
     computed: {
-        ...mapGetters([
-            'PRODUCTS',
-            'CART'
-        ]),
         sortedProducts() {
             if (this.PRODUCTS.length > 0) {
                 let productsArray = this.PRODUCTS.slice(0);

@@ -3,7 +3,8 @@ import Vue from 'vue'
 const state = {
     cart: [],
     cartCount: 0,
-    subTotal: 0
+    subTotal: 0,
+    loading: true
 };
 const getters = {
     CART: state => state.cart
@@ -51,6 +52,7 @@ const mutations = {
 const actions = {
     INIT_CART: ({commit}, product) => {
         commit('SET_CART', product)
+        state.loading = false
     }
 };
 

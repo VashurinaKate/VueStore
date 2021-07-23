@@ -1,7 +1,8 @@
 import router from '@/router'
 
 const state = {
-    products: {}
+    products: {},
+    loading: true
 };
 const getters = {
     PRODUCTS: state => state.products
@@ -12,16 +13,16 @@ const mutations = {
     }
 };
 const actions = {
-    // gets all products
     INIT_STORE: ({commit}) => {
         axios.get('static/products.json').then(response => {
-            commit('SET_STORE', response.data.products);
+            commit('SET_STORE', response.data.products)
+            state.loading = false
         })
     },
-    // gets product page (by id in route)
     INIT_PRODUCT_ITEM: ({commit}) => {
         axios.get('static/products.json').then(response => {
             commit('SET_STORE', response.data.products.filter(data => data.id == router.currentRoute.params.id)[0]);
+            state.loading = false
         })
     }
 };

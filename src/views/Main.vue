@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import MyHeader from './Header.vue'
+import MyHeader from '@/components/Header.vue'
 
 export default {
     name: 'imain',

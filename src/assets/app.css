@@ -75,6 +75,25 @@ hr {
   color: white;
   background: #F16D7F;
 }
+.btn--disabled {
+  background: grey;
+  border: 1px solid white;
+  color: white;
+}
+.btn--disabled:hover {
+  background: grey;
+  cursor: not-allowed;
+}
+.added-to-cart {
+  background: #F16D7F;
+  cursor: initial;
+}
+.added-to-cart:hover {
+  background: #F16D7F;
+  color: white;
+  cursor: initial;
+
+}
 
 .header {
   display: -webkit-box;
