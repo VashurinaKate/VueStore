@@ -6,7 +6,7 @@
       "description": "A 25 pound bag of <em>irresistible</em>, organic goodness for your cat.",
       "price": 2000,
       "image": "static/images/products/1.jpg",
-      "availableInventory": 10,
+      "availableInventory": 0,
       "rating": 3
     },
     {

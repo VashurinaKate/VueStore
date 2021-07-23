@@ -10,10 +10,13 @@
                     :to="{name : 'Id', params: {id: cartItem.id}}">{{ cartItem.title }}
                 </router-link>
             </div>
-                <p>Price: <span class="price">{{ cartItem.price }}</span> x 
-                <span>{{ this.quantity }}</span>
-                :
-                <span class="price">{{ this.calcTotalPrice }}</span></p>
+                <p>Price: <span class="price">{{ cartItem.price | formatPrice}}</span> x 
+                <span>{{ cartItem.quantity }}</span>
+                =
+                <span class="price">
+                    <!-- {{ cartItem.totalPrice }} -->
+                    {{ calcTotalPrice | formatPrice }}
+                    </span></p>
                 <p>Color: Red</p>
                 <p>Size: XL</p>
                 <div class="quantity">
@@ -21,9 +24,12 @@
                     <input
                         type="number"
                         min="1"
-                        v-model.number="quantity"
+                        v-model.number="cartItem.quantity"
                         name="quant"
                         id="quantity">
+                        <!-- @change="changeQuantity(cartItem)"
+                        v-model.number="cartItem.quantity"
+                         -->
                 </div>
         </div>
         <div
@@ -40,11 +46,6 @@
 export default {
     name: 'CartItem',
     props: ['cartItem'],
-    data() {
-        return {
-            quantity: 1
-        }
-    },
     methods: {
         removeFromCart(item) {
             this.$store.commit('REMOVE_FROM_CART', item);
@@ -52,7 +53,7 @@ export default {
     },
     computed: {
         calcTotalPrice() {
-            return this.quantity * this.cartItem.price
+            return this.cartItem.price * this.cartItem.quantity
         }
     }
 }

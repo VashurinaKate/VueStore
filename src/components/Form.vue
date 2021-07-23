@@ -72,10 +72,10 @@
         </pre>
 
         <div class="cart__subtotal">
-            SUB TOTAL <span>&dollar;900</span>
+            SUB TOTAL <span>{{ this.$store.state.shoppingCart.subTotal }}</span>
         </div>
         <div class="cart__grandtotal">
-            GRAND TOTAL <span>&dollar;900</span>
+            GRAND TOTAL <span>{{ this.$store.state.shoppingCart.subTotal }}</span>
         </div>
         <hr>
         <button type="submit" class="btn btn--main" v-on:click="submitForm">PLACE ORDER</button>

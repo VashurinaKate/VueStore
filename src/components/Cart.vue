@@ -3,16 +3,25 @@
         <my-header></my-header>
         <div class="cart center">
             <div class="cart__items">
+                <div
+                    v-if="this.$store.state.shoppingCart.cart.length == 0">
+                    Your cart is empty
+                </div>
                 <cart-item
+                    v-else
                     :cartItem="cartItem"
                     v-for="cartItem in this.$store.state.shoppingCart.cart"
                     :key="cartItem.id"
                     ></cart-item>
 
+                {{ showSubTotal | formatPrice }}
                 <div class="cart__bottom">
-                    {{ showSubTotal }}
-                    <a href="#" class="btn btn--simple">Clear shopping cart</a>
-                    <a href="#" class="btn btn--simple">Continue shopping</a>
+                    <button
+                        class="btn btn--simple"
+                        @click="clearCart">Clear cart</button>
+                    <router-link
+                        :to="{name : 'Catalog'}"
+                        class="btn btn--simple">Continue shopping</router-link>
                 </div>
             </div>
             
@@ -29,20 +38,19 @@ import OrderForm from './Form.vue'
 export default {
     name: 'Cart',
     components: { MyHeader, OrderForm, CartItem },
-    data() {
-        return {
-            subTotal: 0
-        }
-    },
     methods: {
-
+        clearCart() {
+            this.$store.commit('CLEAR_CART', { cart: [] });
+        }
     },
     computed: {
         showSubTotal() {
+            let sum = 0
             for (let item of this.$store.state.shoppingCart.cart) {
-                this.subTotal += item.totalPrice;
+                sum += item.totalPrice;
             }
-            return this.subTotal
+            return sum
+
         }
     }
 }
