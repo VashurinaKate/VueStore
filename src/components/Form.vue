@@ -1,112 +1,92 @@
 <template>
-  <div>
-  <my-header :cartItemCount="cartItemCount"></my-header>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-info">
-          <div class="panel-heading">Pet Depot Checkout</div>
-          <div class="panel-body">
-            <div class="form-group">
-              <div class="col-md-12">
-                <h4><strong>Enter Your Information</strong></h4>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-6">
-                <strong>First Name:</strong>
-                <input v-model.trim="order.firstName" class="form-control" />
-              </div>
-              <div class="col-md-6">
-                <strong>Last Name:</strong>
-                <input v-model.trim="order.lastName" class="form-control" />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-12"><strong>Address:</strong></div>
-              <div class="col-md-12">
-                <input v-model.trim="order.address" class="form-control" />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-12"><strong>City:</strong></div>
-              <div class="col-md-12">
-                <input v-model.trim="order.city" class="form-control" />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-2">
-                <strong>State:</strong>
-                <select v-model="order.state" class="form-control">
-                  <option disabled value="">State</option>
-                  <option v-for="(state, key) in states" v-bind:value="state">
-                  {{key}}
-                  </option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-6 col-md-offset-4">
-                <strong>Zip / Postal Code:</strong>
-                <input v-model.number="order.zip"
-                   class="form-control"
-                   type="number"/>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-6 boxes">
-                <input type="checkbox"
-                       id="gift" value="true"
-                                 v-bind:true-value="order.sendGift"
-                                 v-bind:false-value="order.dontSendGift"
-                                 v-model="order.gift">
-                <label for="gift">Ship As Gift?</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-6 boxes">
-                <input type="radio"
-                       id="home"
-                       v-bind:value="order.home"
-                       v-model="order.method">
-                <label for="home">Home</label>
-                <input type="radio"
-                       id="business"
-                       v-bind:value="order.business"
-                       v-model="order.method">
-                <label for="business">Business</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-6">
-                <button type="submit" class="btn btn-primary submit" v-on:click="submitForm">Place Order</button>
-              </div>
-            </div>
-            <div class="col-md-12 verify">
-              <pre>
-                First Name: {{order.firstName}}
-                Last Name: {{order.lastName}}
-                Address: {{order.address}}
-                City: {{order.city}}
-                Zip: {{order.zip}}
-                State: {{order.state}}
-                Method: {{order.method}}
-                Gift: {{order.gift}}
-              </pre>
-            </div>
-          </div>
+  <!-- <my-header :cartItemCount="cartItemCount"></my-header> -->
+  <!-- <cart :cart="cart"></cart> -->
+  <div class="cart__form">
+    <form action="#">
+        <div class="cart__form-heading">
+            SHIPPING ADRESS
         </div>
+        <label>First Name:</label>
+        <input v-model.trim="order.firstName" placeholder="Your First Name"/>
 
+        <label>Last Name:</label>
+        <input v-model.trim="order.lastName" placeholder="Your Last Name"/>
 
-      </div>
+        <label>Address:</label>
+        <input v-model.trim="order.address" placeholder="Your Address"/>
+
+        <label>City:</label>
+        <input v-model.trim="order.city" placeholder="Your City"/>
+
+        <label>State:</label>
+        <select v-model="order.state">
+          <option disabled value="">State</option>
+          <option v-for="(state, key) in states" v-bind:value="state">
+          {{key}}
+          </option>
+        </select>
+
+        <label>Zip / Postal Code:</label>
+        <input v-model.number="order.zip"
+          class="form-control"
+          type="number"
+          placeholder="Postcode / Zip"/>
+
+        <input
+          type="checkbox"
+          class="checkbox"
+          id="gift"
+          value="true"
+          v-bind:true-value="order.sendGift"
+          v-bind:false-value="order.dontSendGift"
+          v-model="order.gift">
+        <label for="gift">Ship As Gift?</label>
+        <input
+          class="radio"
+          type="radio"
+          id="home"
+          v-bind:value="order.home"
+          v-model="order.method">
+        <label for="home">Home</label>
+        <input
+          class="radio"
+          type="radio"
+          id="business"
+          :value="order.business"
+          v-model="order.method">
+        <label for="business">Business</label>
+        <!-- <button type="submit" class="btn btn--main" v-on:click="submitForm">PLACE ORDER</button> -->
+        <!-- <input type="submit" value="GET A QUOTE"> -->
+    </form>
+
+    <div class="cart__order">
+        <pre>
+          First Name: {{order.firstName}}
+          Last Name: {{order.lastName}}
+          Address: {{order.address}}
+          City: {{order.city}}
+          Zip: {{order.zip}}
+          State: {{order.state}}
+          Method: {{order.method}}
+          Gift: {{order.gift}}
+        </pre>
+
+        <div class="cart__subtotal">
+            SUB TOTAL <span>{{ this.$store.state.shoppingCart.subTotal }}</span>
+        </div>
+        <div class="cart__grandtotal">
+            GRAND TOTAL <span>{{ this.$store.state.shoppingCart.subTotal }}</span>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn--main" v-on:click="submitForm">PLACE ORDER</button>
     </div>
   </div>
 </template>
 
 <script>
-import MyHeader from './Header.vue';
+
 export default {
-  name: 'Form',
-  props: ['cartItemCount'],
+  name: 'OrderForm',
   data () {
     return {
       states: {
@@ -133,7 +113,6 @@ export default {
  
     }
   },
-  components: { MyHeader },
   methods: {
     submitForm() {
       alert('Submitted');
