@@ -1,17 +1,20 @@
 <template>
     <main class="products center">
         <div class="products__heading">
-            <h1>Catalog</h1>
+            <h1>Bestsellers</h1>
             <p>Shop for items based on what we featured in this week</p>
         </div>
         <loader v-if="this.$store.state.products.loading"/>
         <div class="products__items">
             <catalog-item
-                v-for="product in sortedProducts"
+                v-for="product in PRODUCTS.slice(0, this.bestSellersToShow)"
                 :product="product"
                 :cart="CART"
                 :key="product.id"
                 @addToCart="addToCart"></catalog-item>
+        </div>
+        <div class="products__bottom">
+            <button @click="browseMoreProducts" class="btn btn--main">Browse All Product</button>
         </div>
     </main>
 </template>
@@ -21,29 +24,20 @@ import CatalogItem from './CatalogItem.vue'
 import Loader from './Loader.vue'
 
 export default {
-    name: 'Catalog',
+    name: 'Bestsellers',
     components: { CatalogItem, Loader },
-    methods: {
-
+    data() {
+        return {
+            bestSellersToShow: 3
+        }
     },
-    computed: {
-        sortedProducts() {
-            if (this.PRODUCTS.length > 0) {
-                let productsArray = this.PRODUCTS.slice(0);
-                function compare(a, b) {
-                if (a.title.toLowerCase() < b.title.toLowerCase())
-                    return -1;
-                if (a.title.toLowerCase() > b.title.toLowerCase())
-                    return 1;
-                return 0;
-                }
-                return productsArray.sort(compare);
-            }
+    methods: {
+        browseMoreProducts() {
+            this.bestSellersToShow += 3;
         }
     },
     created: function() {
-        this.$store.dispatch('INIT_STORE');
+        this.$store.dispatch('INIT_BESTSELLERS');
     }
 }
 </script>
-

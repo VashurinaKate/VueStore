@@ -1,6 +1,5 @@
 <template>
     <div>
-        <my-header></my-header>
         <!-- product_slider -->
         <!-- <h1>This is the id {{ $route.params.id }}</h1> -->
         <loader v-if="this.$store.state.products.loading"/>
@@ -9,7 +8,7 @@
                 <div class="product__slider-prev">
                     <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.995 2L3.995 7L8.995 12L7.995 14L0.994995 7L7.995 0L8.995 2Z" fill="black"/>
-                        </svg>                
+                        </svg>
                 </div>
                 <div class="product__slider-item">
                     <div class="product__slider-top">
@@ -104,11 +103,10 @@
 </template>
 
 <script>
-import MyHeader from './Header.vue'
 import Loader from './Loader.vue'
 
 export default {
-    components: { MyHeader, Loader },
+    components: { Loader },
     methods: {
         edit() {
             this.$router.push({name: 'Edit'})

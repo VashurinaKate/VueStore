@@ -44,6 +44,15 @@
       "image": "static/images/products/5.jpg",
       "availableInventory": 8,
       "rating": 1
+    },
+    {
+      "id": 1006,
+      "title": "ELLERY X M'O CAPSULE",
+      "description": "Drive your cat crazy with this <em>amazing</em> product.",
+      "price": 2099,
+      "image": "static/images/products/6.jpg",
+      "availableInventory": 6,
+      "rating": 3
     }
   ]
 }

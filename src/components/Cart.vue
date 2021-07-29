@@ -1,6 +1,5 @@
 <template>
     <div>
-        <my-header></my-header>
         <div class="cart center">
             <div class="cart__items">
                 <loader v-if="this.$store.state.shoppingCart.cart.loading"/>
@@ -14,7 +13,6 @@
                     v-for="cartItem in this.$store.state.shoppingCart.cart"
                     :key="cartItem.id"
                     ></cart-item>
-
                 {{ showSubTotal | formatPrice }}
                 <div class="cart__bottom">
                     <button
@@ -25,21 +23,19 @@
                         class="btn btn--simple">Continue shopping</router-link>
                 </div>
             </div>
-            
             <order-form></order-form>
         </div>
     </div>
 </template>
 
 <script>
-import MyHeader from './Header.vue'
 import CartItem from './CartItem.vue'
 import OrderForm from './Form.vue'
 import Loader from './Loader.vue'
 
 export default {
     name: 'Cart',
-    components: { MyHeader, OrderForm, CartItem, Loader },
+    components: { OrderForm, CartItem, Loader },
     methods: {
         clearCart() {
             this.$store.commit('CLEAR_CART', { cart: [] });
@@ -52,7 +48,6 @@ export default {
                 sum += item.totalPrice;
             }
             return sum
-
         }
     }
 }

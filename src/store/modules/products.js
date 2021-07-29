@@ -7,6 +7,11 @@ const state = {
 const getters = {
     PRODUCTS: state => state.products
 };
+// const mutations = {
+//     'SET_STORE' (state, products) {
+//         state.products = products;
+//     }
+// };
 const mutations = {
     'SET_STORE' (state, products) {
         state.products = products;
@@ -19,6 +24,14 @@ const actions = {
             state.loading = false
         })
     },
+
+    INIT_BESTSELLERS: ({commit}) => {
+        axios.get('static/products.json').then(response => {
+            commit('SET_STORE', response.data.products.filter(item => item.rating > 2))
+            state.loading = false
+        })
+    },
+
     INIT_PRODUCT_ITEM: ({commit}) => {
         axios.get('static/products.json').then(response => {
             commit('SET_STORE', response.data.products.filter(data => data.id == router.currentRoute.params.id)[0]);
