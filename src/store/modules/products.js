@@ -1,7 +1,7 @@
 import router from '@/router'
 
 const state = {
-    products: {},
+    products: [],
     loading: true
 };
 const getters = {
@@ -27,7 +27,7 @@ const actions = {
 
     INIT_BESTSELLERS: ({commit}) => {
         axios.get('static/products.json').then(response => {
-            commit('SET_STORE', response.data.products.filter(item => item.rating > 2))
+            commit('SET_STORE', response.data.products.filter(item => item.rating > 3))
             state.loading = false
         })
     },

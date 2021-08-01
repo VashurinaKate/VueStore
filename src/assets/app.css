@@ -84,15 +84,12 @@ hr {
   background: grey;
   cursor: not-allowed;
 }
+
 .added-to-cart {
   background: #F16D7F;
   cursor: initial;
-}
-.added-to-cart:hover {
-  background: #F16D7F;
   color: white;
   cursor: initial;
-
 }
 
 .header {
@@ -118,16 +115,16 @@ hr {
 .header .burger {
   cursor: pointer;
 }
-.header__right details {
+.header__right .side-menu-wrap {
   display: inline-block;
 }
-.header__right details summary {
+.header__right .side-menu {
   margin-right: 32px;
 }
-.header__right details ::-webkit-details-marker {
+.header__right .side-menu-wrap ::-webkit-details-marker {
   display: none;
 }
-.header__right details .dropdown {
+.header__right .side-menu-wrap .dropdown {
   position: absolute;
   margin-top: 21px;
   right: 0;
@@ -138,25 +135,25 @@ hr {
           box-shadow: 6px 4px 35px 0px rgba(0, 0, 0, 0.21);
   z-index: 10;
 }
-.header__right details .dropdown svg {
+.header__right .side-menu-wrap .dropdown svg {
   position: absolute;
   right: 16px;
   top: 16px;
   width: 12px;
 }
-.header__right details .dropdown__heading {
+.header__right .side-menu-wrap .dropdown__heading {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
 }
-.header__right details .dropdown__subheading {
+.header__right .side-menu-wrap .dropdown__subheading {
   font-size: 14px;
   font-weight: 400;
   margin-top: 24px;
   text-transform: uppercase;
   color: #F16D7F;
 }
-.header__right details .dropdown__list li {
+.header__right .side-menu-wrap .dropdown__list li {
   list-style-type: none;
   margin: 11px 0 11px 20px;
   color: #6F6E6E;
@@ -310,7 +307,7 @@ hr {
           transform: scale(1.01);
 }
 .products__item-content {
-  padding: 0 18px;
+  padding: 0 18px 18px;
 }
 .products__item-name a {
   display: inline-block;
@@ -325,6 +322,8 @@ hr {
   color: #9F9F9F;
   font-size: 14px;
   line-height: 17px;
+  height: 34px;
+  overflow: hidden;
   font-weight: 300;
 }
 .products__item-price {
@@ -332,6 +331,11 @@ hr {
   font-size: 16px;
   line-height: 19px;
   margin: 20px 0;
+}
+.products__item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .products__item .btn {
   position: absolute;
@@ -866,6 +870,8 @@ label {
 }
 .cart__img {
   width: 100%;
+  /* width: 300px;
+  height: 350px; */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

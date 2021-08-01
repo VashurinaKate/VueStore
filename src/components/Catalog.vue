@@ -1,28 +1,33 @@
 <template>
-    <main class="products center">
-        <div class="products__heading">
-            <h1>Catalog</h1>
-            <p>Shop for items based on what we featured in this week</p>
-        </div>
-        <loader v-if="this.$store.state.products.loading"/>
-        <div class="products__items">
-            <catalog-item
-                v-for="product in sortedProducts"
-                :product="product"
-                :cart="CART"
-                :key="product.id"
-                @addToCart="addToCart"></catalog-item>
-        </div>
-    </main>
+    <div>
+        <breadcrumbs></breadcrumbs>
+
+        <main class="products center">
+            <div class="products__heading">
+                <h1>Catalog</h1>
+                <p>Shop for items based on what we featured in this week</p>
+            </div>
+            <loader v-if="this.$store.state.products.loading"/>
+            <div class="products__items">
+                <catalog-item
+                    v-for="product in sortedProducts"
+                    :product="product"
+                    :cart="CART"
+                    :key="product.id"
+                    @addToCart="addToCart"></catalog-item>
+            </div>
+        </main>
+    </div>
 </template>
 
 <script>
 import CatalogItem from './CatalogItem.vue'
 import Loader from './Loader.vue'
+import Breadcrumbs from './Breadcrumbs'
 
 export default {
     name: 'Catalog',
-    components: { CatalogItem, Loader },
+    components: { CatalogItem, Loader, Breadcrumbs },
     methods: {
 
     },

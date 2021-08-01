@@ -5,6 +5,8 @@ import Catalog from '@/components/Catalog'
 import Product from '@/components/Product'
 import Cart from '@/components/Cart'
 import EditProduct from '@/components/EditProduct'
+import Registration from '@/views/Registration'
+// import Bestsellers from '@/components/Bestsellers'
 
 Vue.use(Router)
 
@@ -26,7 +28,10 @@ export default new Router({
     {
       path: '/product/:id',
       name: 'Id',
-      component: Product,
+      components: {
+        default: Product,
+        // bestsellers: Bestsellers
+      },
       props: true,
       children: [
         {
@@ -34,13 +39,26 @@ export default new Router({
           name: 'Edit',
           component: EditProduct,
           props: true
-        }
+        },
+        // {
+        //   path: 'bestsellers',
+        //   name: 'Bestsellers',
+        //   component: Bestsellers,
+        //   props: true
+        // }
       ]
     },
     {
       path: '/cart',
       name: 'Cart',
       component: Cart,
+      props: true
+    },
+    {
+      path: '/registration',
+      name: 'Registration',
+      component: Registration,
+      meta: { breadCrumb: 'Registration' },
       props: true
     },
     {

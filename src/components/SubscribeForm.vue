@@ -2,7 +2,7 @@
     <section class="subscribe center">
         <div class="subscribe__info">
             <div class="subscribe__photo">
-                <img src="img/user.jpg" alt="user">
+                <img src="/static/images/user.jpg" alt="user">
             </div>
             <div class="subscribe__text">
                 <blockquote>''Vestibulum quis porttitor dui! Quisque viverra nunc mi, a pulvinar purus condimentum''</blockquote>
@@ -22,3 +22,8 @@ export default {
     name: 'SubscribeForm'
 }
 </script>
+<style scoped>
+.subscribe {
+  background-image: url(/static/images/subscribe-bg.jpg);
+}
+</style>

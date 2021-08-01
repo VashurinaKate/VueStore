@@ -14,9 +14,8 @@
                 <span>{{ cartItem.quantity }}</span>
                 =
                 <span class="price">
-                    <!-- {{ cartItem.totalPrice }} -->
-                    {{ calcTotalPrice | formatPrice }}
-                    </span></p>
+                    {{ cartItem.totalPrice | formatPrice }}
+                </span></p>
                 <p>Color: Red</p>
                 <p>Size: XL</p>
                 <div class="quantity">
@@ -24,12 +23,10 @@
                     <input
                         type="number"
                         min="1"
+                        @change="changeQuantity(cartItem)"
                         v-model.number="cartItem.quantity"
                         name="quant"
                         id="quantity">
-                        <!-- @change="changeQuantity(cartItem)"
-                        v-model.number="cartItem.quantity"
-                         -->
                 </div>
         </div>
         <div
@@ -49,11 +46,9 @@ export default {
     methods: {
         removeFromCart(item) {
             this.$store.commit('REMOVE_FROM_CART', item);
-        }
-    },
-    computed: {
-        calcTotalPrice() {
-            return this.cartItem.price * this.cartItem.quantity
+        },
+        changeQuantity(item) {
+            this.$store.commit('CHANGE_QUANTITY', item);
         }
     }
 }

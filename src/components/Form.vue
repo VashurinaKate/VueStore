@@ -1,7 +1,5 @@
 <template>
-  <!-- <my-header :cartItemCount="cartItemCount"></my-header> -->
-  <!-- <cart :cart="cart"></cart> -->
-  <div class="cart__form">
+  <div class="cart__form" v-if="CART.length">
     <form action="#">
         <div class="cart__form-heading">
             SHIPPING ADRESS
@@ -72,7 +70,7 @@
         </pre>
 
         <div class="cart__subtotal">
-            SUB TOTAL <span>{{ this.$store.state.shoppingCart.subTotal }}</span>
+            SUB TOTAL <span>{{ this.$store.state.shoppingCart.subTotal | formatPrice }}</span>
         </div>
         <div class="cart__grandtotal">
             GRAND TOTAL <span>{{ this.$store.state.shoppingCart.subTotal }}</span>
@@ -86,38 +84,37 @@
 <script>
 
 export default {
-  name: 'OrderForm',
-  data () {
-    return {
-      states: {
-        AL: 'Alabama',
-        AK: 'Alaska',
-        AR: 'Arizona',
-        CA: 'California',
-        NV: 'Nevada'
+    name: 'OrderForm',
+        data () {
+            return {
+              states: {
+                  AL: 'Alabama',
+                  AK: 'Alaska',
+                  AR: 'Arizona',
+                  CA: 'California',
+                  NV: 'Nevada'
+              },
+              order: {
+                  firstName: '',
+                  lastName: '',
+                  address: '',
+                  city: '',
+                  zip: '',
+                  state: '',
+                  method: 'Home Address',
+                  business: 'Business Address',
+                  home: 'Home Address',
+                  gift:'',
+                  sendGift: 'Send As A Gift',
+                  dontSendGift: 'Do Not Send As A Gift'
+              }
+          }
       },
-      order: {
-        firstName: '',
-        lastName: '',
-        address: '',
-        city: '',
-        zip: '',
-        state: '',
-        method: 'Home Address',
-        business: 'Business Address',
-        home: 'Home Address',
-        gift:'',
-        sendGift: 'Send As A Gift',
-        dontSendGift: 'Do Not Send As A Gift'
-      }
- 
+    methods: {
+        submitForm() {
+            alert('Submitted');
+        }
     }
-  },
-  methods: {
-    submitForm() {
-      alert('Submitted');
-    }
-  }
 }
 </script>
 <style scoped>

@@ -7,14 +7,18 @@
         <loader v-if="this.$store.state.products.loading"/>
         <div class="products__items">
             <catalog-item
-                v-for="product in PRODUCTS.slice(0, this.bestSellersToShow)"
+                v-for="(product) in PRODUCTS.slice(0, this.bestSellersToShow)"
                 :product="product"
                 :cart="CART"
                 :key="product.id"
                 @addToCart="addToCart"></catalog-item>
         </div>
         <div class="products__bottom">
-            <button @click="browseMoreProducts" class="btn btn--main">Browse All Product</button>
+            <button
+                @click="browseMoreProducts"
+                v-if="this.bestSellersToShow < PRODUCTS.length"
+                class="btn btn--main">
+                Browse More Products</button>
         </div>
     </main>
 </template>
@@ -28,7 +32,7 @@ export default {
     components: { CatalogItem, Loader },
     data() {
         return {
-            bestSellersToShow: 3
+            bestSellersToShow: 3,
         }
     },
     methods: {

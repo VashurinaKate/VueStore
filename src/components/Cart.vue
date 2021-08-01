@@ -3,20 +3,21 @@
         <div class="cart center">
             <div class="cart__items">
                 <loader v-if="this.$store.state.shoppingCart.cart.loading"/>
-                <div
-                    v-if="this.$store.state.shoppingCart.cart.length == 0">
+                <div class="empty-cart"
+                    v-if="CART.length == 0">
                     Your cart is empty
                 </div>
                 <cart-item
                     v-else
                     :cartItem="cartItem"
-                    v-for="cartItem in this.$store.state.shoppingCart.cart"
+                    v-for="cartItem in CART"
                     :key="cartItem.id"
                     ></cart-item>
-                {{ showSubTotal | formatPrice }}
+                {{ calcSubTotal | formatPrice }}
                 <div class="cart__bottom">
                     <button
                         class="btn btn--simple"
+                        v-if="CART.length"
                         @click="clearCart">Clear cart</button>
                     <router-link
                         :to="{name : 'Catalog'}"
@@ -42,15 +43,21 @@ export default {
         }
     },
     computed: {
-        showSubTotal() {
-            let sum = 0
+        calcSubTotal() {
+            let subTotal = 0
             for (let item of this.$store.state.shoppingCart.cart) {
-                sum += item.totalPrice;
+                subTotal += item.totalPrice;
             }
-            return sum
+            this.$store.commit('SET_SUB_TOTAL', subTotal);
+            return subTotal
         }
     }
 }
 </script>
 <style scoped>
+.empty-cart {
+    color: #F16D7F;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
 </style>

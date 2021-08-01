@@ -53,6 +53,60 @@
       "image": "static/images/products/6.jpg",
       "availableInventory": 6,
       "rating": 3
+    },
+    {
+      "id": 1007,
+      "title": "ELLERY X M'O CAPSULE",
+      "description": "A 25 pound bag of <em>irresistible</em>, organic goodness for your cat.",
+      "price": 2000,
+      "image": "static/images/products/7.jpg",
+      "availableInventory": 0,
+      "rating": 3
+    },
+    {
+      "id": 1008,
+      "title": "Yarn",
+      "description": "Yarn your cat can play with for a very <strong>long</strong> time!",
+      "price": 299,
+      "image": "static/images/products/8.jpg",
+      "availableInventory": 7,
+      "rating": 5
+    },
+    {
+      "id": 1009,
+      "title": "Kitty Litter",
+      "description": "Premium kitty litter for your cat.",
+      "price": 1100,
+      "image": "static/images/products/9.jpg",
+      "availableInventory": 4,
+      "rating": 4
+    },
+    {
+      "id": 1010,
+      "title": "ELLERY X M'O CAPSULE",
+      "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi!",
+      "price": 799,
+      "image": "static/images/products/10.jpg",
+      "availableInventory": 2,
+      "rating": 5
+    },
+    {
+      "id": 1011,
+      "title": "Laser Pointer",
+      "description": "Drive your cat crazy with this <em>amazing</em> product.",
+      "price": 4999,
+      "image": "static/images/products/11.jpg",
+      "availableInventory": 8,
+      "rating": 1
+    },
+    {
+      "id": 1012,
+      "title": "ELLERY X M'O CAPSULE",
+      "description": "Drive your cat crazy with this <em>amazing</em> product.",
+      "price": 2099,
+      "image": "static/images/products/12.jpg",
+      "availableInventory": 6,
+      "rating": 5
     }
   ]
 }
